@@ -48,8 +48,8 @@ module tt_um_danielhufnagle_vga(
     .vpos(pix_y)
   );
   
-  //wire [9:0] moving_x = pix_x * counter;
-  wire [9:0] moving_x = pix_x - counter;
+  wire [9:0] moving_x = pix_x * counter;
+  //wire [9:0] moving_x = pix_x - counter;
 
   assign R = video_active ? {moving_x[5], pix_y[2]} : 2'b00;
   assign G = video_active ? {moving_x[6], pix_y[2]} : 2'b00;
