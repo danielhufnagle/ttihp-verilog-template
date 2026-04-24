@@ -8,7 +8,7 @@
 module tt_um_danielhufnagle_rng(
   input  wire       ena,      // always 1 when the design is powered, so you can ignore it
   input  wire       clk,      // clock
-  input  wire       rst_n     // reset_n - low to reset
+  input  wire       rst_n,     // reset_n - low to reset
   output reg [15:0] out       // output
 );
   always @(posedge clk or negedge rst_n) begin
