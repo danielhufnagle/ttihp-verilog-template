@@ -9,12 +9,11 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Verilog stripes from tinytapeout VGA site, but stripe position changes by multiplication, which adds a neat effect
-
+Random number generator
 ## How to test
 
 idk man
 
 ## External hardware
 
-VGA
+none
