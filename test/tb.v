@@ -17,14 +17,22 @@ module tb ();
   reg clk;
   reg rst_n;
   reg ena;
-  wire[15:0] out; 
+  reg [7:0] ui_in;
+  reg [7:0] uio_in;
+  wire [7:0] uo_out;
+  wire [7:0] uio_out;
+  wire [7:0] uio_oe;
 
   // Replace tt_um_example with your module name:
   tt_um_danielhufnagle_rng user_project (
-      .out    (out),
-      .ena    (ena),      // enable - goes high when design is selected
-      .clk    (clk),      // clock
-      .rst_n  (rst_n)     // not reset
+      .ui_in   (ui_in),
+      .uo_out  (uo_out),
+      .uio_in  (uio_in),
+      .uio_out (uio_out),
+      .uio_oe  (uio_oe),
+      .ena     (ena),      // enable - goes high when design is selected
+      .clk     (clk),      // clock
+      .rst_n   (rst_n)     // not reset
   );
 
 endmodule

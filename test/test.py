@@ -25,17 +25,16 @@ async def test_project(dut):
 
     dut._log.info("Test project behavior")
 
-    # Set the input values you want to test
-    dut.ui_in.value = 20
-    dut.uio_in.value = 30
+    # The RNG should output different values on successive clock cycles
+    previous_output = dut.uo_out.value
+    
+    for i in range(5):
+        await ClockCycles(dut.clk, 1)
+        current_output = dut.uo_out.value
+        dut._log.info(f"Clock cycle {i+1}: output = {current_output}")
+        # LFSR should generate different values (with very high probability)
+        assert current_output != previous_output or i == 0, f"Output should change, got same value twice"
+        previous_output = current_output
 
-    # Wait for one clock cycle to see the output values
-    await ClockCycles(dut.clk, 1)
-
-    # The following assersion is just an example of how to check the output values.
-    # Change it to match the actual expected output of your module:
-    #assert dut.uo_out.value == 50
-
-    # Keep testing the module by changing the input values, waiting for
-    # one or more clock cycles, and asserting the expected output values.
+    dut._log.info("RNG test passed!")
     cocotb.pass_test()
